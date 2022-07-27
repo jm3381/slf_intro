@@ -26,36 +26,16 @@
 
             // 스크롤 이벤트
             $(".content-box").scroll(function(){
-                var scrArr = [0, 314, 947, 1710, 2342, 9999];
-
-                var scr = $(this).scrollTop();
-                var act_idx = $("#tabs li").index($("#tabs li.ui-tabs-active.ui-state-active"));
-
-                var scr = $(this).scrollTop();
-                var act_idx = $("#tabs li").index($("#tabs li.ui-tabs-active.ui-state-active"));
-                // console.log(scr + ", " + act_idx);
-
-                if(scr >= 2342){
-                    if(act_idx != 4)    changeTab(5);
-                }else if(scr >= 1710){
-                    if(act_idx != 3)    changeTab(4);
-                }else if(scr >= 947){
-                    if(act_idx != 2)    changeTab(3);
-                }else if(scr >= 314){
-                    if(act_idx != 1)    changeTab(2);
-                }else if(scr < 314){
-                    if(act_idx != 0)    changeTab(1);
-                }
-
-                /*
-                for(var i=0; i<scrArr.length; i++){
-                    if(scr > scrArr[i] && scr <= scrArr[i+1]){
-                        var tabNo = i + 1;
-                        if(act_idx != i)    changeTab(tabNo);
-                        return;
+                var height = $("div.profile-box").outerHeight() + $("#tabs").outerHeight() + 10;
+                $("div.content-child").each(function(){
+                    var top = $(this).offset().top;
+                    var bottom = top + $(this).outerHeight();
+                    if(top < height && bottom > height){
+                        $("#tabs li").removeClass("ui-tabs-active ui-state-active");
+                        $("li[id^=" + $(this).attr("id") + "]").addClass("ui-tabs-active ui-state-active");
                     }
-                }
-                */
+                });
+
             });
         });
 
@@ -79,6 +59,7 @@
                 </p>
             </div>
         </div>
+        
         <!-- nav -->
         <div id="tabs" class="ui-tabs ui-corner-all ui-widget ui-widget-content">
             <ul class="ui-tabs-nav ui-corner-all ui-helper-reset ui-helper-clearfix ui-widget-header">
@@ -108,7 +89,7 @@
                 <p>
                     <ion-icon name="caret-forward-outline"></ion-icon>
                     <span>한국사회보장정보원 복지자격정보부</span>
-                    <div>
+                    <div class="img-wrap">
                         <img class="attch_img" src="./images/ssis.jpg"/>
                     </div>
                 </p>
@@ -119,7 +100,7 @@
                 <p>
                     <ion-icon name="caret-forward-outline"></ion-icon>
                     <span>사진</span>
-                    <div>
+                    <div class="img-wrap">
                         <img class="attch_img" src="./images/photo.jpg"/>
                     </div>
                 </p>
@@ -130,7 +111,7 @@
                 <p>
                     <ion-icon name="caret-forward-outline"></ion-icon>
                     <span>외계+인</span>
-                    <div>
+                    <div class="img-wrap">
                         <img class="attch_img" src="./images/movie.jpg"/>
                     </div>
                 </p>
@@ -141,7 +122,7 @@
                 <p>
                     <ion-icon name="caret-forward-outline"></ion-icon>
                     <span>포켓몬고</span>
-                    <div>
+                    <div class="img-wrap">
                         <img class="attch_img" src="./images/game.png"/>
                     </div>
                 </p>
@@ -152,7 +133,7 @@
                 <p>
                     <ion-icon name="caret-forward-outline"></ion-icon>
                     <span>심규선</span>
-                    <div>
+                    <div class="img-wrap">
                         <img class="attch_img" src="./images/singer.jpg"/>
                     </div>
                 </p>
