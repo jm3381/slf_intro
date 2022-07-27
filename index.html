@@ -26,6 +26,11 @@
 
             // 스크롤 이벤트
             $(".content-box").scroll(function(){
+                var scrArr = [0, 314, 947, 1710, 2342, 9999];
+
+                var scr = $(this).scrollTop();
+                var act_idx = $("#tabs li").index($("#tabs li.ui-tabs-active.ui-state-active"));
+
                 var scr = $(this).scrollTop();
                 var act_idx = $("#tabs li").index($("#tabs li.ui-tabs-active.ui-state-active"));
                 // console.log(scr + ", " + act_idx);
@@ -41,6 +46,16 @@
                 }else if(scr < 314){
                     if(act_idx != 0)    changeTab(1);
                 }
+
+                /*
+                for(var i=0; i<scrArr.length; i++){
+                    if(scr > scrArr[i] && scr <= scrArr[i+1]){
+                        var tabNo = i + 1;
+                        if(act_idx != i)    changeTab(tabNo);
+                        return;
+                    }
+                }
+                */
             });
         });
 
