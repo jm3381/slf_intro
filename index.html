@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--css-->
+    <link rel="stylesheet" type="text/css" href="./css/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="./css/jquery-ui.structure.css">
+    <link rel="stylesheet" type="text/css" href="./css/jquery-ui.theme.css">
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <!--ionicons-->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <!--jquery-->
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <title>자기소개</title>
+    <script>
+        $(document).ready(function(){
+            // 네비게이션 버튼 클릭 이벤트
+            $("#tabs").find("li").on("click", function(event){
+                $(this).siblings().removeClass("ui-tabs-active ui-state-active");
+                $(this).addClass("ui-tabs-active ui-state-active");
+            });
+
+            // 스크롤 이벤트
+            $(".content-box").scroll(function(){
+                var scr = $(this).scrollTop();
+                var act_idx = $("#tabs li").index($("#tabs li.ui-tabs-active.ui-state-active"));
+                // console.log(scr + ", " + act_idx);
+
+                if(scr >= 2342){
+                    if(act_idx != 4)    changeTab(5);
+                }else if(scr >= 1710){
+                    if(act_idx != 3)    changeTab(4);
+                }else if(scr >= 947){
+                    if(act_idx != 2)    changeTab(3);
+                }else if(scr >= 314){
+                    if(act_idx != 1)    changeTab(2);
+                }else if(scr < 314){
+                    if(act_idx != 0)    changeTab(1);
+                }
+            });
+        });
+
+        function changeTab(tabNo){
+            console.log("changeTab called")
+            $("#tabs li").removeClass("ui-tabs-active ui-state-active");
+            $("#tabs li").eq(tabNo-1).addClass("ui-tabs-active ui-state-active");
+        }
+    </script>
+</head>
+<body>
+    <div class="intro-box type2">
+        <!-- profile -->
+        <div class="profile-box">
+            <div class="profile-lbox">
+                <img class="profile" src="./images/mayo.jpg"/>
+            </div>
+            <div class="profile-rbox">
+                안녕하세요, 반자민입니다.
+            </div>
+        </div>
+        <!-- nav -->
+        <div id="tabs" class="ui-tabs ui-corner-all ui-widget ui-widget-content">
+            <ul class="ui-tabs-nav ui-corner-all ui-helper-reset ui-helper-clearfix ui-widget-header">
+                <li id="departTab" class="ui-tabs-tab ui-corner-top ui-state-default ui-tab ui-tabs-active ui-state-active">
+                    <a class="ui-tabs-anchor" href="#depart">소속</a>
+                </li>
+                <li id="hobbyTab" class="ui-tabs-tab ui-corner-top ui-state-default ui-tab">
+                    <a class="ui-tabs-anchor" href="#hobby">취미</a>
+                </li>
+                <li id="movieTab" class="ui-tabs-tab ui-corner-top ui-state-default ui-tab">
+                    <a class="ui-tabs-anchor" href="#movie">영화</a>
+                </li>
+                <li id="gameTab" class="ui-tabs-tab ui-corner-top ui-state-default ui-tab">
+                    <a class="ui-tabs-anchor" href="#game">게임</a>
+                </li>
+                <li id="singerTab" class="ui-tabs-tab ui-corner-top ui-state-default ui-tab">
+                    <a class="ui-tabs-anchor" href="#singer">가수</a>
+                </li>
+            </ul>
+        </div>
+        <!-- contents -->
+        <div class="content-box">
+            <div class="content-child" id="depart">
+                <ion-icon class="ion-icon" name="flash-outline"></ion-icon>
+                <div class="title">소속</div>
+                <br/>
+                <p>
+                    <ion-icon name="caret-forward-outline"></ion-icon>
+                    <span>한국사회보장정보원 복지자격정보부</span>
+                    <div>
+                        <img class="attch_img" src="./images/ssis.jpg"/>
+                    </div>
+                </p>
+            </div>
+            <div class="content-child" id="hobby">
+                <ion-icon name="flash-outline"></ion-icon>
+                <div class="title">취미</div>
+                <p>
+                    <ion-icon name="caret-forward-outline"></ion-icon>
+                    <span>사진</span>
+                    <div>
+                        <img class="attch_img" src="./images/photo.jpg"/>
+                    </div>
+                </p>
+            </div>
+            <div class="content-child" id="movie">
+                <ion-icon name="flash-outline"></ion-icon>
+                <div class="title">최근 본 영화</div>
+                <p>
+                    <ion-icon name="caret-forward-outline"></ion-icon>
+                    <span>외계+인</span>
+                    <div>
+                        <img class="attch_img" src="./images/movie.jpg"/>
+                    </div>
+                </p>
+            </div>
+            <div class="content-child" id="game">
+                <ion-icon name="flash-outline"></ion-icon>
+                <div class="title">즐겨하는 게임</div>
+                <p>
+                    <ion-icon name="caret-forward-outline"></ion-icon>
+                    <span>포켓몬고</span>
+                    <div>
+                        <img class="attch_img" src="./images/game.png"/>
+                    </div>
+                </p>
+            </div>
+            <div class="content-child" id="singer">
+                <ion-icon name="flash-outline"></ion-icon>
+                <div class="title">좋아하는 가수</div>
+                <p>
+                    <ion-icon name="caret-forward-outline"></ion-icon>
+                    <span>심규선</span>
+                    <div>
+                        <img class="attch_img" src="./images/singer.jpg"/>
+                    </div>
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
